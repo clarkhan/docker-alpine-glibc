@@ -37,6 +37,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
     echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
     \
     apk del glibc-i18n tzdata && \
+    mkdir -p $(dirname /usr/share/zoneinfo/$TZ) && cp -f /etc/localtime /usr/share/zoneinfo/$TZ && \
     \
     rm "/root/.wget-hsts" && \
     apk del .build-dependencies && \
